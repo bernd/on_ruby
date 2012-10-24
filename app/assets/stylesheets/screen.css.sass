@@ -150,6 +150,12 @@ nav
   margin: 0em
   height: 100%
 
+  .markdown
+    ul
+      padding-left: 20px
+      li
+        list-style: disc
+
   .hint
     padding-top: 1em
     padding-bottom: 1em
@@ -302,10 +308,14 @@ nav
 
   .enumeration
     reset-counter:enumeration
-    li
+    li:nth-child(-n+9)
       counter-increment: enumeration
       &:before
         content: "0" counter(enumeration) ". "
+    li:nth-child(n+10)
+      counter-increment: enumeration
+      &:before
+        content: counter(enumeration) ". "
   form
     ol
       margin: 0em
@@ -409,28 +419,35 @@ footer
       ol
         list-style: armenian
 
-#github, #senor_developer
-  height: 30px
-  top: 100px
+.ribbon_wrap
   position: absolute
-  text-decoration: none
-  width: 250px
-  span
-    background: white
-    color: #444
-    font-size: 14px
-    left: 0
-    padding: 5px 0
-    position: absolute
-    text-align: center
+  top: 48px
+  width: 150px
+  height: 150px
+  overflow: hidden
+  a
+    height: 30px
+    text-decoration: none
     width: 250px
-    @include box-shadow(#888 0px 1px 10px)
-    @include text-shadow(#888 0px 1px 10px)
-
-#senor_developer
-  left: -65px
-  @include rotate(-45deg)
-
-#github
-  right: -65px
-  @include rotate(45deg)
+    position: absolute
+    top: 52px
+    span
+      background: white
+      color: #444
+      font-size: 14px
+      padding: 5px 0
+      display: block
+      text-align: center
+      width: 250px
+      @include box-shadow(#888 0px 1px 10px)
+      @include text-shadow(#888 0px 1px 10px)
+    &#senor_developer
+      @include rotate(-45deg)
+      left: -65px
+    &#github
+      @include rotate(45deg)
+      right: -65px
+  &#senor_developer_ribbon
+    left: 0px
+  &#github_ribbon
+    right: 0px

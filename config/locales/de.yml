@@ -6,6 +6,10 @@ de:
       month: "%B %Y"
   countries:
     DE: "Deutschland"
+  switch_languages: "Umschalten auf %{language}"
+  languages:
+    de: "Deusch"
+    en: "Englisch"
   usergroups: "Usergroups"
   companies: "Firmen"
   events: "Treffen"
@@ -13,6 +17,7 @@ de:
   people: "Leute"
   wishes: "Themen"
   topics: "Themen"
+  materials: "Zusätzliches Material"
   login:
     profile: "Profil"
     logout: "Ausloggen"
@@ -33,13 +38,14 @@ de:
     at: "bei"
     attend: "Ich möchte teilnehmen"
     not_attend: "Nicht mehr teilnehmen"
+    login_before_attend: "Bitte logge dich zuerst ein!"
     attendees: "Teilnehmer"
     route: "Anfahrt"
     material: "Material"
   home:
     the_usergroup: "Die <strong>%{usergroup}</strong> ist eine Benutzergruppe, Anwendergruppe, Interessengemeinschaft oder auch einfach nur ein Haufen Leute, die Spaß an der Programmiersprache Ruby haben. Tausch dich mit uns aus und komm zu unserem nächsten Treffen! Neue Gesichter sind immer gerne gesehen."
     like_to_talk: "Möchtest du einen Vortrag auf der Ruby Usergroup halten oder hast du zusätzliche Themenvorschläge?"
-    send_us_an_email: "Dann schicke uns einfach eine <a href='mailto:%{mail_to}'>E-Mail</a> oder spreche uns persönlich an:"
+    send_us_an_email: "Dann schicke uns einfach eine %{mail_to} oder spreche uns persönlich an:"
     engage: "Usergroups leben von Vorträgen und dem Engagement der Teilnehmer. Wenn du ein Thema vermisst, oder nähre Informationen zu speziellen Bereichen suchst, dann <strong>kannst du hier gerne etwas in die Wunschliste eintragen</strong>. Solltest du schon eine Idee zu einem Vortrag oder ähnlichem haben, dann <strong>kannst du ihn hier eintragen</strong>, um Feedback von der Ruby / Rails Community zu bekommen."
     add_topic: "Eigenes Thema eintragen"
     new_topics: "Aktuelle Themen"
@@ -63,10 +69,13 @@ de:
     proposed_topics: "Vorgeschlagene Themen"
   user:
     saved_successful: "Deine Daten wurden gespeichert."
+  location:
+    job_offers: "Jobangebote"
   wish:
+    markdown: "Du kannst <a href='http://daringfireball.net/projects/markdown/syntax'>Markdown</a> in deiner Beschreibung verwenden, URLs werden automatisch verlinkt."
     already_done: "Thema wurde schon auf einem Treffen abgefrühstückt."
     vote: "mit %{stars} Sternen bewerten"
-    meta: "von %{twitter_link} - %{count} mal mit %{stars} von 5 Sternen bewertet"
+    meta: "von %{link} - %{count} mal mit %{stars} von 5 Sternen bewertet"
     twitter_message: "Neues Thema von @%{nickname} '%{name}' %{url}"
   event:
     twitter_message: "%{name} am %{date} %{url}"
@@ -84,3 +93,6 @@ de:
     double_vote: "Du darfst nicht mehrfach bewerten!"
     voted: "Das Thema wurde bewertet."
     wish_added: "Dein Eintrag wurde gespeichert."
+  mobile:
+    back: "Zurück"
+    home: "Home"

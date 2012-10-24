@@ -25,6 +25,7 @@ class Event < ActiveRecord::Base
   has_many :materials
 
   validates :location, :user, :name, :description, :date, presence: true
+  validates :name, uniqueness: {scope: :label}
 
   attr_accessible :location_id, :user_id, :published, :name, :description, :date, as: :admin
 
@@ -33,8 +34,8 @@ class Event < ActiveRecord::Base
 
   default_scope -> { where(:label => Whitelabel[:label_id]) }
 
-  scope :current, lambda{ where(date: Date.today.to_time..(Time.now + 4.weeks)).limit(1) }
-  scope :latest, where('date < ?', Time.now).order('date DESC')
+  scope :current, lambda{ where(date: Date.today.to_time..(Time.now + 8.weeks)).limit(1).order('date ASC') }
+  scope :latest, where('date < ?', Date.today.to_time).order('date DESC')
   scope :unpublished, where(published: false)
   scope :ordered, order("date DESC")
 
@@ -68,7 +69,8 @@ class Event < ActiveRecord::Base
     else
       logger.warn "publishing in test-modus with url #{event_url}"
     end
-    update_attributes!(published: true)
+    self.published = true
+    self.save!
   end
 
   class << self

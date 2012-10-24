@@ -1,4 +1,9 @@
 HOR =
+  loginNote: ->
+    $('form').on 'click', 'input[data-disable]', (event) ->
+      event.preventDefault()
+      alert($(this).data('disable'))
+
   showHide: ->
     $(".toggle").click (event) ->
       event.preventDefault()
@@ -36,7 +41,7 @@ HOR =
       jQuery.each arr, ->
         h = undefined
         marker = undefined
-        h = "<strong><a href='" + @url + "'>" + @name + "</a></strong></br>"
+        h = "<strong><a href='/locations/" + @slug + "'>" + @name + "</a></strong></br>"
         h += "" + @street + " " + @house_number + "</br>"
         h += "" + @zip + " " + @city
         ll = new L.LatLng(@lat, @long)
@@ -69,7 +74,7 @@ HOR =
       $(this).parent().fadeOut()
 
   reload: ->
-    $(".jobs").filter(":hidden :first").show()  if $(".jobs").filter(":visible").size() is 0
+    $(".jobs").filter(":hidden").first().show()  if $(".jobs").filter(":visible").size() is 0
     $(".reload").click (event) ->
       event.preventDefault()
       first = $(".jobs").filter(":visible")
@@ -77,7 +82,7 @@ HOR =
       if first.next().length > 0
         first.next().fadeIn()
       else
-        $(".jobs").filter(":hidden :first").fadeIn()
+        $(".jobs").filter(":hidden").first().fadeIn()
 
   moreList: (name) ->
     elements = $(name + " ul li")
@@ -90,12 +95,12 @@ HOR =
       $(name + " a.more").parent().hide()
 
 $(document).ready ->
+  HOR.loginNote()
   HOR.reload()
   HOR.close()
   HOR.showHide()
   HOR.scrollPage()
   HOR.moreList "#events"
-  HOR.moreList "#jobs"
   HOR.moreList "#undone"
   HOR.moreList "#done"
   HOR.moreList "#events_participated"

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :event do
-    name "Weihnachtstreffen"
+    sequence(:name){ |n| "Weihnachtstreffen #{2000 + n}" }
     date "2010-12-06 11:47:30"
     description "MyText"
     association :location
@@ -10,6 +10,6 @@ FactoryGirl.define do
   end
 
   factory :event_with_participants, parent: :event do |event|
-    event.after_create { FactoryGirl.create(:participant) }
+    after(:create) { |event| FactoryGirl.create(:participant, event: event) }
   end
 end
