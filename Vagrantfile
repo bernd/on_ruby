@@ -1,5 +1,5 @@
 Vagrant::Config.run do |config|
-  config.vm.box = "precise_64_with_ruby_193"
+  config.vm.box = "precise_64"
 
   # Boot with a GUI so you can see the screen. (Default is headless)
   # config.vm.boot_mode = :gui
@@ -47,13 +47,16 @@ end
 # sudo apt-get install build-essential zlib1g-dev libssl-dev libreadline-dev git-core curl libyaml-dev libsqlite3-dev apache2-dev -y
 # sudo apt-get install libcurl4-gnutls-dev curl puppet -y
 # sudo rm -rf /opt/vagrant_ruby
-# curl --remote-name http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p194.tar.gz
-# tar zxf ruby-1.9.3-p194.tar.gz
-# cd ruby-1.9.3-p194/
+# curl --remote-name http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p286.tar.gz
+# tar zxf ruby-1.9.3-p286.tar.gz
+# cd ruby-1.9.3-p286/
 # ./configure
 # make
 # sudo make install
 # exit
+# # fixing facter fqdn > vi /etc/hosts
+# # 127.0.0.1   localhost
+# # 127.0.1.1   box.example.com box
 #
 # vagrant package
 #
