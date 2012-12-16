@@ -6,9 +6,13 @@ bundler_args: "--without development production"
 language: ruby
 rvm:
   - 1.9.3
+branches:
+  only:
+    - master
 after_script:
   - gem install heroku
   - yes | ruby travis_deployer.rb
   - heroku keys:clear
   - yes | heroku keys:add
   - git push heroku master
+  - heroku run rake db:migrate --app hamburg-on-ruby

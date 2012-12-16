@@ -2,17 +2,20 @@ class EventsController < ApplicationController
   before_filter :check_login, only: :add_user
 
   expose(:events) { Event.ordered }
-  expose(:event)
+  expose(:event) { Event.includes(materials: :user, topics: :user, participants: :user).find(params[:id]) }
 
   respond_to :html, :mobile, :json, only: :add_user
-  respond_to :xml, only: :rss
-  respond_to :ics, only: :show
+  respond_to :xml, only: :index
+  respond_to :json, :ics, only: :show
 
-  def rss; end
+  def index; end
 
   def show
     respond_to do |format|
       format.html
+      format.json do
+        render json: event.as_api_response(:ios_v1)
+      end
       format.ics do
         render text: event.to_ical(event_url(event))
       end

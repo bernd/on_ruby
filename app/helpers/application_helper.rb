@@ -75,7 +75,11 @@ module ApplicationHelper
   def map(locations, init = {zoom: 12})
     locations = Array(locations)
     init = Whitelabel[:location].merge(init)
-    content_tag(:div, '', class: 'map_canvas', 'data-map' => locations.to_json, 'data-init' => init.to_json)
+    data = {
+      map: locations.to_json,
+      init: init.to_json,
+    }
+    content_tag :div, '', class: 'map_canvas', data: data
   end
 
   def markdown(content)
@@ -96,6 +100,12 @@ module ApplicationHelper
       concat content_tag(:div, link_to(t("hint.close"), '#'), class: :close) if close
       yield
     end
+  end
+
+  def render_cached
+    key = [Whitelabel[:label_id], controller_name, action_name].join("/")
+    Rails.logger.info "cache fragment '#{key}'"
+    cache(key, expires_in: 4.hours) { yield }
   end
 
   private

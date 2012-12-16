@@ -26,10 +26,7 @@ class Location < ActiveRecord::Base
   attr_accessible :name, :url, :city, :street, :house_number, :zip,
     :lat, :long, :company, as: :admin
 
-  default_scope -> { where(:label => Whitelabel[:label_id]) }
-
-  scope :company, where(company: true)
-  scope :cometogether, joins(:events).select("distinct(locations.id), locations.*")
+  default_scope -> { where(label: Whitelabel[:label_id]) }
 
   def full_address
     "#{street} #{house_number}, #{zip} #{city}, #{I18n.t('countries.DE')}"

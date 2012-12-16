@@ -23,10 +23,8 @@ class Wish < ActiveRecord::Base
 
   has_many :votes, dependent: :destroy
 
-  default_scope -> { where(:label => Whitelabel[:label_id]) }
+  default_scope -> { where(label: Whitelabel[:label_id]) }
 
-  scope :done,    where(done: true).order('id DESC')
-  scope :undone,  where(done: false).order('id DESC')
   scope :ordered, order('created_at DESC')
 
   def stars
@@ -41,5 +39,9 @@ class Wish < ActiveRecord::Base
   def copy_to_topic!
     Topic.create!({name: name, description: description, user: user, event: Event.last}, as: :admin)
     update_attributes!(done: true)
+  end
+
+  def self.by_status(status = :done)
+    includes(votes: :user).where(done: status == :done).order('id DESC')
   end
 end

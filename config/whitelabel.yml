@@ -169,3 +169,44 @@
   - :name: "Google Technology User Group"
     :url: "https://plus.google.com/109775289623271731783/posts"
     :twitter: 'karlsruhegtug'
+- !ruby/object:Usergroup
+  label_id: "berlin"
+  default_locale: "en"
+  domains: ["rug-b.de"]
+  recurring: "first thursday 19:30"
+  email: "rug-b@googlegroups.com"
+  mailing_list: "https://groups.google.com/group/rug-b"
+  host: "berlin.onruby.de"
+  twitter: "rug_b"
+  organizers: ['freaklikeme', 'Hagenburger', 'PragTob']
+  location:
+    :zoom: 14
+    :lat: 52.52
+    :long: 13.4
+  imprint:
+    :address: "Adalbertstraße 8\n10999 Berlin"
+    :contributors:
+    - :name: "Ruby Berlin e.V."
+      :email: "thilo@upstre.am"
+- !ruby/object:Usergroup
+  label_id: "leipzig"
+  default_locale: "de"
+  domains: ["leipzigonrails.de"]
+  recurring: "third thursday 19:00"
+  email: "leipzigonrails@googlegroups.com"
+  mailing_list: "https://groups.google.com/group/leipzigonrails"
+  host: "leipzig.onruby.de"
+  twitter: "LeipzigOnRails"
+  organizers: ['cpetschnig', 'knugie', 'tmetzmac']
+  location:
+    :zoom: 14
+    :lat: 51.32870
+    :long: 12.32329
+  imprint:
+    :contributors:
+    - :name: "Christoph Petschnig"
+      :email: "leipzigonrails@googlegroups.com"
+    - :name: "Wolfgang Teuber"
+      :email: "leipzigonrails@googlegroups.com"
+    - :name: "Thomas Metzmacher"
+      :email: "leipzigonrails@googlegroups.com"

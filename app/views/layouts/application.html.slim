@@ -6,13 +6,12 @@ html
     meta name="description" content="#{meta_desc}"
     meta name="author" content="github contributors: #{contributors}"
     link rel='shortcut icon' href=image_path('ruby.png')
-    = auto_discovery_link_tag :rss, rss_events_path, title: "Event-Feed"
+    = auto_discovery_link_tag :rss, events_path(format: :xml), title: "Event-Feed"
     = csrf_meta_tag
     = stylesheet_link_tag "application"
     = whitelabel_stylesheet_link_tag
     = javascript_include_tag "application"
     = whitelabel_javascript_include_tag
-    = javascript_include_tag "https://apis.google.com/js/plusone.js", "https://platform.twitter.com/widgets.js"
     = render 'shared/i18njs'
   body
     = ribbon(:github)
@@ -30,3 +29,4 @@ html
     footer
       = render 'shared/footer', imprint: Whitelabel[:imprint], other_usergroups: Whitelabel[:other_usergroups]
   = render 'shared/info'
+  = javascript_include_tag "https://apis.google.com/js/plusone.js", "https://platform.twitter.com/widgets.js"
